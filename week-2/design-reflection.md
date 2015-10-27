@@ -2,6 +2,7 @@
 
 *My site map*  
 
+<<<<<<< HEAD
 ![Link to site map](/week-2/imgs/site-map.png)
 
 1. What are the 6 Phases of Web Design?  
@@ -75,3 +76,6 @@ It's important because users have a lot of different needs and expectations, and
 7. Which parts of the challenge did you find tedious?  
 
 I don't think anything was particularly tedious. I had a little struggle understanding where to point my file path for the image, but figured it out by clicking on the image and seeing where the URL was broken. It just seems a bit counter intuitive, since the reflection file was already in a directory, but it seems like previous directories still need to be specified. 
+=======
+![Alt Text](/week-2/imgs/site-map.png)
+>>>>>>> b6f361162e0832f2bbb97516414b4044cb3d1cad
