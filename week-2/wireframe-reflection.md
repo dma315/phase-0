@@ -3,10 +3,10 @@
 ## Wireframe images
 
 **Home Page - About Me**
-![Alt Text](/phase-0/week-2/imgs/wireframe-index.png)
+![Alt Text](/master/week-2/imgs/wireframe-index.png)
 
 **Blog Index**
-![Alt Text](/phase-0/week-2/imgs/wireframe-blog-index.png)
+![Alt Text](/master/week-2/imgs/wireframe-blog-index.png)
 
 ## Reflection
 
