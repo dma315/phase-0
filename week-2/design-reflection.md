@@ -1,15 +1,10 @@
 # Design reflection
 
 *My site map*  
-<<<<<<< HEAD
-=======
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> master
 ![Alt Text](/week-2/imgs/site-map.png)
 
-1. What are the 6 Phases of Web Design?  
+*1. What are the 6 Phases of Web Design?* 
 
 	1. Information Gathering
 		-What is the purpose? (provide info, promote a service, sell a product, etc.)
@@ -42,24 +37,24 @@
 		-New content!
 		-Probably speed
 
-2. What is your site's primary goal or purpose? What kind of content will your site feature?  
+*2. What is your site's primary goal or purpose? What kind of content will your site feature?*
 
 My site's primary goal or purpose is to be an introduction to a potential employer. 
 It will feature some of my work, my background, and my contact information. 
 
-3. What is your target audience's interests and how do you see your site addressing them?  
+*3. What is your target audience's interests and how do you see your site addressing them?* 
 
 My target audience's interests would be assessing whether I'll be a viable employee for them.
 To do this, I hope to showcase some of my better work, show my personality by introducing myself, and provide contact information if they are interested in learning more. 
 
-4. What is the primary "action" the user should take when coming to your site? Do you want them to search for information, contact you, or see your portfolio? It's ok to have several actions at once, or different actions for different kinds of visitors.  
+*4. What is the primary "action" the user should take when coming to your site? Do you want them to search for information, contact you, or see your portfolio? It's ok to have several actions at once, or different actions for different kinds of visitors.*
 
 I'd say there are three actions:
 	1. View my work
 	2. Learn more about me via other links if interested (FB, Twitter)
 	3. Reach out if interested
 
-5. What are the main things someone should know about design and user experience?  
+*5. What are the main things someone should know about design and user experience?*
 
 The big takeaway for me on design was that it's a VERY broad term.  
 
@@ -69,7 +64,7 @@ There are a lot of psychological elements, with the key being empathizing with t
 
 I think they absolute key to know here is that there isn't a magic solution to designing or building for an excellent user experience. It's a lot of work that deals with solving a problem. 
 
-6. What is user experience design and why is it valuable?   
+*6. What is user experience design and why is it valuable?*
 
 User experience is valuable because it's what may be one the key determinants of whether a user will want to use a given system.
 
@@ -77,16 +72,6 @@ This applies to what we're doing, but also to anything else a user can use (e.g.
 
 It's important because users have a lot of different needs and expectations, and to create something truly engaging (or easy to use, which is only part of it), designing the user experience is where you'd start.
 
-7. Which parts of the challenge did you find tedious?  
+*7. Which parts of the challenge did you find tedious?*
 
 I don't think anything was particularly tedious. I had a little struggle understanding where to point my file path for the image, but figured it out by clicking on the image and seeing where the URL was broken. It just seems a bit counter intuitive, since the reflection file was already in a directory, but it seems like previous directories still need to be specified. 
-<<<<<<< HEAD
-
-=======
-=======
-![Alt Text](/week-2/imgs/site-map.png)
->>>>>>> b6f361162e0832f2bbb97516414b4044cb3d1cad
-=======
-![Alt Text](/week-2/imgs/site-map.png)
->>>>>>> b6f361162e0832f2bbb97516414b4044cb3d1cad
->>>>>>> master
