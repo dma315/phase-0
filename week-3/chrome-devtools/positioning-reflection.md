@@ -1,4 +1,4 @@
-![Exercise 1](imgs/01-change-color.png)
+![Exercise 1](imgs/01-change-colors.png)
 ![Exercise 2](imgs/02-column.png)
 ![Exercise 3](imgs/03-row.png)
 ![Exercise 4](imgs/04-make-equidistant.png)
