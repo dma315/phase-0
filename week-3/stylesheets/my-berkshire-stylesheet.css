@@ -1,34 +1,78 @@
-    /*Text: #000080 (navy)
-Links: #800080 (purple)
-Visited links : #ff0000 (red)
-background: #ffffff (white)*/
- * {
+/*
+
+What is important to know when linking an external file (like a stylesheet) to an HTML file?
+    
+    I think the top most important thing is obviously to make sure it's linked to the right directory.
+    The second point that is very critical is they cascade in the order in which they're linked (top to bottom).
+    That is, if the second CSS file does not specify a format for a given tag but the first does, it will take the formatting from the first.
+    But if the second and first do have it, it will override and take from the bottom most CSS file.
+
+What tricks did you use to help you with positioning? How hard was it to get the site as you wanted it?
+
+    We played around with quite a few configurations of width and margin to make it look close.
+    It wasn't too bad, but to make it mirror exactly what the Berkshire site looks like would've been quite a chore.
+    The key challenge here I think is that getting the %'s right for widths is challenging, especially when there are browser default paddings that interfere with calcualtions.
+
+
+What CSS did you use to modify the element style (like size, color, etc.)
+
+    We used all sorts of elements:
+        Color: Self explanatory
+        Background color: Self explanatory
+        Margin: Helped with positioning
+        Width: Helped with positioning and size
+        Display: Helped with positioning the columns
+        Otherwise, we did some typical centering, font size changes, and bolding.
+
+
+Did you modify the HTML to include classes or ids? If so, which did you choose and why? If you didn't, how would you know which one to add to your HTML?
+
+    Yes indeed. We used both classes and IDs.
+    I think the classes are most useful when there are multiple elements that need their own styling.
+    And IDs great for individual elements.
+    In this case, we had the two columns take a class styling for width.
+    But then gave them ID's as well to help make their margins line up.
+
+When you compared your site to the actual code base, which do you think had cleaner code that followed best practices and why?
+
+    I think the DBC version is nicer.
+    It looks like they do all their styling in HTML with no link to CSS.
+    And they used tables, which are super ugly and tough to use I think.
+    Definitely appreciate the more "best practice" exercise of going through this. 
+
+*/
+
+* {
     color: #000080;
     background-color: #ffffff;
 }
+
 a {
     color: #800080;
 }
+
 a:visited {
     color: #ff0000;
 }
 
-#leftcolumn {
+section li {
+	margin: 35px;
+}
+
+section#leftcolumn {
+    margin-left: 4%;
     width: 45%;
     display: inline-block;
     float: left;
 }
 
-#rightcolumn {
+section#rightcolumn {
+    margin-right: 4%;
     width: 45%;
     display: inline-block;
     float: right;
 }
 
-.bottom {
-    clear:both;
-    text-align: center;
-}
 
 .description {
     font-size: .75em;
@@ -36,6 +80,28 @@ a:visited {
 
 .heading {
     font-weight: bold;
-   /*Put the line breaks in somehow*/
-    
+    text-align: center;    
+}
+
+.heading .big {
+	font-size: 32px;
+}
+
+.heading p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.bottom {
+    clear:both;
+    text-align: center;
+}
+
+.bottom p {
+	font-size: 0.5em;
+	margin-top: 0px;
+}
+
+.span-small {
+	font-size: 0.8em;
 }
