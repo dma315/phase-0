@@ -1,3 +1,13 @@
+![Exercise 1](imgs/01-change-color.png)
+![Exercise 2](imgs/02-column.png)
+![Exercise 3](imgs/03-row.png)
+![Exercise 4](imgs/04-make-equidistant.png)
+![Exercise 5](imgs/05-squares.png)
+![Exercise 6](imgs/06-footer.png)
+![Exercise 7](imgs/07-header.png)
+![Exercise 8](imgs/08-sidebar.png)
+![Exercise 9](imgs/09-creative.png)
+
 **How can you use Chrome's DevTools inspector to help you format or position elements?**
 
 I think the nice part about the Chrome DevTools inspector is that it allows the user to easily diagnose potential positioning issues visually, which of course is a lot better than doing so in just lines of code. 
