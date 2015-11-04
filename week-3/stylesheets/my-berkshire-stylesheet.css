@@ -1,0 +1,41 @@
+    /*Text: #000080 (navy)
+Links: #800080 (purple)
+Visited links : #ff0000 (red)
+background: #ffffff (white)*/
+ * {
+    color: #000080;
+    background-color: #ffffff;
+}
+a {
+    color: #800080;
+}
+a:visited {
+    color: #ff0000;
+}
+
+#leftcolumn {
+    width: 45%;
+    display: inline-block;
+    float: left;
+}
+
+#rightcolumn {
+    width: 45%;
+    display: inline-block;
+    float: right;
+}
+
+.bottom {
+    clear:both;
+    text-align: center;
+}
+
+.description {
+    font-size: .75em;
+}
+
+.heading {
+    font-weight: bold;
+   /*Put the line breaks in somehow*/
+    
+}
