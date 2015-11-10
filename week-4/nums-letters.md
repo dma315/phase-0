@@ -35,11 +35,19 @@ puts 60 * 24 * 365 * 10
 
 # Reflection
 
-In your nums-letters.md file, answer the following questions:
 
-How does Ruby handle addition, subtraction, multiplication, and division of numbers?
-What is the difference between integers and floats?
-What is the difference between integer and float division?
-What are strings? Why and when would you use them?
-What are local variables? Why and when would you use them?
-How was this challenge? Did you get a good review of some of the basics?
+
+**How does Ruby handle addition, subtraction, multiplication, and division of numbers?**
+
+
+
+**What is the difference between integers and floats?**
+
+**What is the difference between integer and float division?**
+
+**What are strings? Why and when would you use them?**
+
+**What are local variables? Why and when would you use them?**
+
+**How was this challenge? Did you get a good review of some of the basics?**
+
