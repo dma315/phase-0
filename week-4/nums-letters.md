@@ -27,3 +27,19 @@ Minutes in a decade without leap years (which is 60 minutes per hour * 24 hours 
 puts 60 * 24 * 365 * 10
 ```
 
+***Challenges from DBC***
+
+[4.2.1 - Defining Variables](Link)
+[4.2.2 - Simple String Methods](Link)
+[4.2.3 - Local Variables and Basic Arithmetical Operations](Link)
+
+# Reflection
+
+In your nums-letters.md file, answer the following questions:
+
+How does Ruby handle addition, subtraction, multiplication, and division of numbers?
+What is the difference between integers and floats?
+What is the difference between integer and float division?
+What are strings? Why and when would you use them?
+What are local variables? Why and when would you use them?
+How was this challenge? Did you get a good review of some of the basics?
