@@ -1,6 +1,6 @@
 # Shortest String
 
-# I worked on this challenge [by myself, with: ].
+# I worked on this challenge by myself
 
 # shortest_string is a method that takes an array of strings as its input
 # and returns the shortest string
