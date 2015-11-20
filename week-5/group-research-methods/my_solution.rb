@@ -22,20 +22,15 @@ end
 
 # Person 2
 def my_array_modification_method!(source, thing_to_modify)
-  source.replace( 
-    source.map do |i|
-    if i.is_a? Integer
-      i += thing_to_modify
-    else i
-    end
-  end
-  )
+  source.map! {|i| 
+    i += thing_to_modify if i.is_a? Integer
+    i
+    }
 end
 
 def my_hash_modification_method!(source, thing_to_modify)
-  source.replace(
-    source.each {|k,v| source[k] = v += thing_to_modify}
-  )
+    source.map {|k,v| source[k] = v + thing_to_modify}
+    p source
 end
 
 # Identify and describe the Ruby method(s) you implemented.
@@ -62,11 +57,11 @@ end
 
 # Person 4
 def my_array_deletion_method!(source, thing_to_delete)
-  source.dup # This line is here to make sure all tests initially fail. Delete it when you begin coding.
+  source.reject! {|i| i.to_s.include?(thing_to_delete)}
 end
 
 def my_hash_deletion_method!(source, thing_to_delete)
-  source.dup # This line is here to make sure all tests initially fail. Delete it when you begin coding.
+  source.reject! {|k,v| k == thing_to_delete}
 end
 
 # Identify and describe the Ruby method(s) you implemented.
@@ -77,11 +72,11 @@ end
 
 # Person 5
 def my_array_splitting_method(source)
-  source # This line is here to make sure all tests initially fail. Delete it when you begin coding.
+  source.partition {|i| i.is_a? Integer}
 end
 
 def my_hash_splitting_method(source, age)
-  source # This line is here to make sure all tests initially fail. Delete it when you begin coding.
+  source.partition {|k,v| v <= age}
 end
 
 # Identify and describe the Ruby method(s) you implemented.
