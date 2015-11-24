@@ -49,7 +49,7 @@ class BingoBoard
   end
   
   def check(string)
-    column_value = @column_hash[string[0]] # Column to check
+    column_value = @column_hash[string[0]] # Index of column to check
     string.slice!(0) # Delete first letter in string
     p value = string.to_i # Number to check
     array_to_check = [] # Empty array to store column into (transposed
