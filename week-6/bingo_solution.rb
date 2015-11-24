@@ -32,6 +32,8 @@
 
 # Initial Solution
 
+=begin
+
 class BingoBoard
 
   attr_accessor(:bingo_board, :column_hash)
@@ -49,28 +51,84 @@ class BingoBoard
   end
   
   def check(string)
+    # Set some local variables we will use later
+    original_value = string.dup
     column_value = @column_hash[string[0]] # Index of column to check
     string.slice!(0) # Delete first letter in string
-    p value = string.to_i # Number to check
-    array_to_check = [] # Empty array to store column into (transposed
+    value = string.to_i # Number to check
+    array_to_check = [] # Empty array to store column into (transposed)
+    
+    # Create an array of just the column we are looking in
     @bingo_board.each do |row|
       array_to_check << row[column_value]
     end
-    @bingo_board[column_value][array_to_check.index(value)] = 'X'
+    
+    # Replace with X if it's a match
+    @bingo_board[array_to_check.index(value)][column_value] = 'X' if array_to_check.index(value)
+    
+    # Give user some input that it's a match!
+    p "Match to #{original_value}!" if array_to_check.index(value)
   end
 
   def show_board
-    p "B  I  N  G  O"
+    puts "B    I    N    G    O"
     @bingo_board.each { |row|
-      p row.each {
-        |element| element.to_s.ljust(4)
+      puts row.map {
+        |element| element.to_s.ljust(4) # Spaced it out and left aligned to make it look nice
         }.join(" ")
       }
   end
   
 end
 
+=end
+
 # Refactored Solution
+
+class BingoBoard
+
+  attr_accessor(:bingo_board, :column_hash, :letter_call, :number_call)
+
+  def initialize(board)
+    @bingo_board = board
+    @column_hash = {'B'=>0,'I'=>1,'N'=>2,'G'=>3,'O'=>4}
+    if board.length != 5 || board.select {|i| i.length != 5}.length != 0
+      raise ArgumentError.new('Board is not a 5x5 array')
+    end
+  end
+
+  def call
+    @letter_call = @column_hash.keys[rand(5)]
+    @number_call = rand(100) + 1
+    p @last_call = @letter_call.dup << @number_call.to_s
+  end
+  
+  def check
+    column_value = @column_hash.keys.index(@letter_call)
+    array_to_check = [] # Empty array to store column into (transposed)
+    
+    # Create an array of just the column we are looking in
+    @bingo_board.each do |row|
+      array_to_check << row[column_value]
+    end
+    
+    # Replace with X if it's a match
+    @bingo_board[array_to_check.index(@number_call)][column_value] = 'X' if array_to_check.index(@number_call)
+    
+    # Give user some input that it's a match!
+    p "Match to #{@last_call}!" if array_to_check.index(@number_call)
+  end
+
+  def show_board
+    puts "B    I    N    G    O"
+    @bingo_board.each { |row|
+      puts row.map {
+        |element| element.to_s.ljust(4) # Spaced it out and left aligned to make it look nice
+        }.join(" ")
+      }
+  end
+  
+end
 
 
 
@@ -82,9 +140,39 @@ board = [[47, 44, 71, 8, 88],
         [75, 70, 54, 80, 83]]
 
 new_game = BingoBoard.new(board)
-new_game.check("N97")
+100.times {
+  new_game.call
+  new_game.check
+}
 new_game.show_board
 
 
 #Reflection
 
+# How difficult was pseudocoding this challenge? What do you think of your pseudocoding style?
+# => Not too bad in my opinion, I think I just needed to make sure I had all of the components
+
+# What are the benefits of using a class for this challenge?
+# => I think the benefits are that we are separating out this game with its own rules and its own attributes.
+# => Other than that, I'm not entirely sure why we needed to create its own class. 
+# => This probably wouldn't have been too bad as a bunch of loose methods, but it would've felt less organized?
+
+# How can you access coordinates in a nested array?
+# => We can continue to string together the [] method to go layers and layers deeper.
+
+# What methods did you use to access and modify the array?
+# => I just did some iterations over the array and directly modified the array, nothing too fancy I don't think.
+
+# Give an example of a new method you learned while reviewing the Ruby docs. Based on what you see in the docs, what purpose does it serve, and how is it called?
+# => I hadn't used .dup before which was nice when helping to make sure we weren't being destructive to variables that should not change.
+# => I don't feel like we needed any fancy methods here, I think the challenge was in the thinking and making sure we were doing the nesting correctly. 
+
+# How did you determine what should be an instance variable versus a local variable?
+# => I didn't feel like we needed many instance variables here. 
+# => I felt like it was only necessary for initializing the hash, but could've been used elsewhere depending on how we set up our methods.
+
+# What do you feel is most improved in your refactored solution?
+# => I think my original was trying to much to feed arguments into call
+# => With the refactored version, .check only checks the last call (which I think makes sense)
+# => This made it less tedious to split out the string and saved some local variable space
+# => And allowed me to make better use of instance variables
