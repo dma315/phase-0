@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>2048 Replicat</title>
+	<link rel="stylesheet" type="text/css" href="game.css">
+	<meta charset="UTF 8">
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td class="tile" id="00"></td>
+			<td class="tile" id="01"></td>
+			<td class="tile" id="02"></td>
+			<td class="tile" id="03"></td>
+		</tr>
+		<tr>
+			<td class="tile" id="10"></td>
+			<td class="tile" id="11"></td>
+			<td class="tile" id="12"></td>
+			<td class="tile" id="13"></td>
+		</tr>
+		<tr>
+			<td class="tile" id="20"></td>
+			<td class="tile" id="21"></td>
+			<td class="tile" id="22"></td>
+			<td class="tile" id="23"></td>
+		</tr>
+		<tr>
+			<td class="tile" id="30"></td>
+			<td class="tile" id="31"></td>
+			<td class="tile" id="32"></td>
+			<td class="tile" id="33"></td>
+		</tr>
+	</table>
+
+	<script>
+
+	// 1.  Set up initial matrix
+	
+	var matrix = {
+		0: [2,2,4,0],
+		1: [0,4,2,0],
+		2: [2,4,8,0],
+		3: [0,4,4,4]
+	}
+
+	function displayMatrix() {
+		for (var i=0; i<=3; i++) {
+			for (var j=0; j<=3; j++) {
+				document.getElementById(i.toString() + j.toString()).innerHTML = matrix[i][j]
+			}
+		}
+	}
+
+	// 2.  Set up functions for consdensing rows / columns
+
+	function condense(array, direction) {
+		// Reverse if going right
+		if (direction == "right") {array = array.reverse()}
+		else array
+
+		// Take away zeroes
+		for (var i = 0; i <= 3; i++) {if (array[i] == 0) array.splice(i,1)}
+
+  		// Adding numbers when equal
+	  	var new_array = [];
+	  	var i = 0;
+	  	while (i < array.length) {
+	  		if (array[i] == array[i+1]) {new_array.push(array[i] + array[i+1]); i += 2}
+	  		else {new_array.push(array[i]); i += 1}
+  		}
+
+	    // Take away zeroes again
+	    for (var i = 0; i <= 3; i++) {if (new_array[i] == 0) new_array.splice(i,1)}
+
+	    // Pad up to length of 4
+		for(var i = new_array.length; i < 4; i++) {new_array.push(0)}; 
+
+		// Reverse again if going the other way	
+		if (direction == "right") {return new_array.reverse()}
+			else return new_array
+		}
+
+	// 3.  Create up / down / left / right functionality using condense
+
+	function left() {
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i])};
+		displayMatrix()
+	}
+
+	function right() {
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i],"right")};
+		displayMatrix()
+	}
+
+	function transpose() {
+		var new_matrix = {}
+		for (var i = 0; i <= 3; i++) {
+			new_matrix[i] = []
+			for (var j = 0; j <= 3; j++) {
+				new_matrix[i].push(matrix[j][i])
+			}
+		}
+		return new_matrix
+	}
+
+	function up() {
+		matrix = transpose(matrix)
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i])}
+			matrix = transpose(matrix)
+		displayMatrix()
+	}
+
+	function down() {
+		matrix = transpose(matrix)
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i],"right")}
+			matrix = transpose(matrix)
+		displayMatrix()
+	}
+
+	// 4. Test
+	window.setTimeout('displayMatrix()',0);
+	window.setTimeout('left()',2000);
+	window.setTimeout('right()',4000);
+	window.setTimeout('up()',6000);
+	window.setTimeout('down()',8000);
+
+
+</script>
+
+</body>
+
+</html>
+

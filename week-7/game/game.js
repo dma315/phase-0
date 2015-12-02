@@ -126,14 +126,12 @@ function condense(array, direction) {
 // 4.  Create left, right, up, down functions
 
 function left() {
-  for (var i = 0; i <= 3; i++)
-    matrix[i] = condense(matrix[i])
+  for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i])};
   displayMatrix()
 }
 
 function right() {
-  for (var i = 0; i <= 3; i++)
-    matrix[i] = condense(matrix[i],"right")
+  for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i],"right")};
   displayMatrix()
 }
 
@@ -150,25 +148,23 @@ function transpose() {
 
 function up() {
   matrix = transpose(matrix)
-  for (var i = 0; i <= 3; i++)
-    matrix[i] = condense(matrix[i])
+  for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i])}
   matrix = transpose(matrix)
   displayMatrix()
 }
 
 function down() {
   matrix = transpose(matrix)
-  for (var i = 0; i <= 3; i++)
-    matrix[i] = condense(matrix[i],"right")
+  for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i],"right")}
   matrix = transpose(matrix)
   displayMatrix()
 }
 
 // displayMatrix()
-// left()
-// right()
-// up()
-// down()
+left()
+right()
+up()
+down()
 
 // 5. Allow user to call L, R, U, D
 
