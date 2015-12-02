@@ -22,8 +22,8 @@
 var matrix = {
   0: [2,2,4,0],
   1: [0,4,2,0],
-  2: [4,4,8,0],
-  3: [0,4,4,4],
+  2: [2,4,8,0],
+  3: [0,4,4,4]
 }
 
 // 2.  Set up ability to display the matrix
@@ -60,7 +60,8 @@ function arrayDisplay(array) {
 function displayMatrix() {
   for (var i = 0; i <= 3; i++) {
     console.log(arrayDisplay(matrix[i]))
-    }
+  }
+  console.log("")
 }
 
 
@@ -70,15 +71,22 @@ function displayMatrix() {
 // Condense any given row 
 function condense(array, direction) {
   
-  var new_array = [];
-  var i = 0;
-  
   if (direction == "right") {
     array = array.reverse()
     }
   else array
   
+  
+  // Take away zeroes
+  for (var i = 0; i <= 3; i++) {
+    if (array[i] == 0)
+      array.splice(i,1)
+  }
+  
+  
   // Initial adding
+  var new_array = [];
+  var i = 0;
   while (i < array.length) {
     if (array[i] == array[i+1]) {
       new_array.push(array[i] + array[i+1])
@@ -90,9 +98,12 @@ function condense(array, direction) {
     }
   }
   
-  // Take away zeroes
-  while (new_array[0] == 0)
-    new_array.shift()
+  // Take away zeroes again
+  for (var i = 0; i <= 3; i++) {
+    if (new_array[i] == 0)
+      new_array.splice(i,1)
+  }
+  
   
   // Pad up to length of 4
   for(var i = new_array.length; i < 4; i++)
@@ -102,15 +113,17 @@ function condense(array, direction) {
     return new_array.reverse()
     }
   else return new_array
-}
 
+}
 
 // console.log(condense([0,2,2,4],"right"))
 // console.log(condense([2,2,2,4]))
 // console.log(condense([0,0,4,4]))
 // console.log(condense([0,4,4,4],"right"))
+// console.log(condense([2,0,4,0]))
 
-// 4.  Set up left, right, up, down functions
+
+// 4.  Create left, right, up, down functions
 
 function left() {
   for (var i = 0; i <= 3; i++)
@@ -124,10 +137,43 @@ function right() {
   displayMatrix()
 }
 
-displayMatrix()
-left()
-right()
+function transpose() {
+  var new_matrix = {}
+  for (var i = 0; i <= 3; i++) {
+    new_matrix[i] = []
+    for (var j = 0; j <= 3; j++) {
+      new_matrix[i].push(matrix[j][i])
+    }
+  }
+  return new_matrix
+}
 
+function up() {
+  matrix = transpose(matrix)
+  for (var i = 0; i <= 3; i++)
+    matrix[i] = condense(matrix[i])
+  matrix = transpose(matrix)
+  displayMatrix()
+}
+
+function down() {
+  matrix = transpose(matrix)
+  for (var i = 0; i <= 3; i++)
+    matrix[i] = condense(matrix[i],"right")
+  matrix = transpose(matrix)
+  displayMatrix()
+}
+
+// displayMatrix()
+// left()
+// right()
+// up()
+// down()
+
+// 5. Allow user to call L, R, U, D
+
+var userInput = readline();
+console.log(userInput)
 
 
 // Reflection
