@@ -18,6 +18,16 @@
 
 // Initial Code
 
+// 0.  Set up random number generator
+
+function random2or4() {
+  var rand = (Math.floor(Math.random()*2)+1)*2
+  return rand
+} 
+
+for (var i=0; i<=20; i++)
+console.log(random2or4())
+
 // 1.  Set up initial matrix
 var matrix = {
   0: [2,2,4,0],
@@ -161,10 +171,10 @@ function down() {
 }
 
 // displayMatrix()
-left()
-right()
-up()
-down()
+// left()
+// right()
+// up()
+// down()
 
 // 5. Allow user to call L, R, U, D
 
