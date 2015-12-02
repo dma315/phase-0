@@ -172,9 +172,6 @@ function down() {
 
 // 5. Allow user to call L, R, U, D
 
-var userInput = readline();
-console.log(userInput)
-
 
 // Reflection
 //
