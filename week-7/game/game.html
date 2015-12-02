@@ -1,0 +1,185 @@
+<!-- 
+What was the most difficult part of this challenge?
+	It was figuring out how functions will "play" with each other and in what sequence, and how the loops act together
+
+What did you learn about creating objects and functions that interact with one another?
+	That the order matters and it's pretty difficult to actually make all of the functions work together
+
+Did you learn about any new built-in methods you could use in your refactored solution? If so, what were they and 
+how do they work?
+	I learned some cool ways of interacting with HTML that I thought were pretty cool. I also have a much better understanding of how to do loops. I do really like the 1 line "for" syntax. 
+
+How can you access and manipulate properties of objects? 
+	Similar to Ruby, we can use Name[index][property] if the index is a numnber, but if it's a string, we can use name.index.property, and so on. 
+
+-->
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>2048 Replicat</title>
+	<link rel="stylesheet" type="text/css" href="game.css">
+	<meta charset="UTF 8">
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td class="tile" id="00"></td>
+			<td class="tile" id="01"></td>
+			<td class="tile" id="02"></td>
+			<td class="tile" id="03"></td>
+		</tr>
+		<tr>
+			<td class="tile" id="10"></td>
+			<td class="tile" id="11"></td>
+			<td class="tile" id="12"></td>
+			<td class="tile" id="13"></td>
+		</tr>
+		<tr>
+			<td class="tile" id="20"></td>
+			<td class="tile" id="21"></td>
+			<td class="tile" id="22"></td>
+			<td class="tile" id="23"></td>
+		</tr>
+		<tr>
+			<td class="tile" id="30"></td>
+			<td class="tile" id="31"></td>
+			<td class="tile" id="32"></td>
+			<td class="tile" id="33"></td>
+		</tr>
+	</table>
+
+	<script>
+
+	// 0. Set up random number generator (picks only 2s or 4s)
+
+	function random2or4() {
+  		var rand = (Math.floor(Math.random()*2)+1)*2
+  		return rand
+	} 
+
+	// 1.  Set up initial matrix
+	
+	function newNum() {
+		row = Math.floor(Math.random()*4);
+		column = Math.floor(Math.random()*4);
+		if (matrix[row][column] == 0) matrix[row][column] = random2or4()
+			else newNum
+	}
+
+	var matrix = {
+		0: [0,0,0,0],
+		1: [0,0,0,0],
+		2: [0,0,0,0],
+		3: [0,0,0,0]
+	}
+
+	newNum()
+	newNum()
+
+	function displayMatrix() {
+		for (var i=0; i<=3; i++) {
+			for (var j=0; j<=3; j++) {
+				document.getElementById(i.toString() + j.toString()).innerHTML = matrix[i][j]
+			}
+		}
+	}
+
+	// 2.  Set up functions for consdensing rows / columns
+
+	function condense(array, direction) {
+		var new_array = [];
+
+		// Reverse if going right
+		if (direction == "right") {new_array = array.reverse()}
+		else new_array = array
+
+		// Take away zeroes
+		for (var i = 0; i <= 3; i++) {if (new_array[i] == 0) new_array.splice(i,1)}
+
+  		// Adding numbers when equal
+	  	var final_array = []
+	  	var i = 0;
+	  	while (i < new_array.length) {
+	  		if (new_array[i] == new_array[i+1]) {final_array.push(new_array[i] + new_array[i+1]); i += 2;}
+	  		else {final_array.push(new_array[i]); i += 1}
+  		}
+
+	    // Take away zeroes again
+	    for (var i = 0; i <= 3; i++) {if (final_array[i] == 0) final_array.splice(i,1)}
+
+	    // Pad up to length of 4
+		for(var i = final_array.length; i < 4; i++) {final_array.push(0)}; 
+
+		// Reverse again if going the other way	
+		if (direction == "right") {final_array = final_array.reverse()}
+			else final_array
+
+		return final_array
+		}
+
+	// 3.  Create up / down / left / right functionality using condense
+
+	function left() {
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i])};
+		newNum();
+		displayMatrix();
+	}
+
+	function right() {
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i],"right")};
+		newNum();
+		displayMatrix()
+	}
+
+	function transpose() {
+		var new_matrix = {}
+		for (var i = 0; i <= 3; i++) {
+			new_matrix[i] = []
+			for (var j = 0; j <= 3; j++) {
+				new_matrix[i].push(matrix[j][i])
+			}
+		}
+		return new_matrix
+	}
+
+	function up() {
+		matrix = transpose(matrix)
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i])}
+			matrix = transpose(matrix)
+		newNum();
+		displayMatrix();
+	}
+
+	function down() {
+		matrix = transpose(matrix)
+		for (var i = 0; i <= 3; i++) {matrix[i] = condense(matrix[i],"right")}
+			matrix = transpose(matrix)
+		newNum();
+		displayMatrix();
+	}
+
+	// 4. Add user input functionality
+
+	displayMatrix()
+
+	document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37: left(); break;          
+        case 38: up(); break;
+        case 39: right(); break;
+        case 40: down(); break;
+    	}
+	};
+
+
+</script>
+
+</body>
+
+</html>
+
