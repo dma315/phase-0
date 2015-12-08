@@ -9,17 +9,22 @@ In this case, we could have many lists for different dates. Each date has many i
 ### Release 6:  Reflection
 
 
-**What is a one-to-one database?**
+**What is a one-to-one database?**  
+
 A 1-1 database contains two tables where the relationships are always one item from one table corresponding to exactly at most one item in the other table.
 
-**When would you use a one-to-one database? (Think generally, not in terms of the example you created).**
+**When would you use a one-to-one database? (Think generally, not in terms of the example you created).**  
+
 We'd use this when creating a relationship that may not have every instance of one table filled.
 
-**What is a many-to-many database?**
+**What is a many-to-many database?**  
+
 Many to many database are really 3 tables, where there is a join table in the middle that describes the relationships between the two other tables. 
 
-**When would you use a many-to-many database? (Think generally, not in terms of the example you created).**
+**When would you use a many-to-many database? (Think generally, not in terms of the example you created).**  
+
 We'd use this in the scenario where the items in the two "outer" tables could correspond (in both ways) to many items in the other table.
 
-**What is confusing about database schemas? What makes sense?**
+**What is confusing about database schemas? What makes sense?**  
+
 Not a ton is confusing here. I've spent considerable time doing SQL database, both querying and creating them, so I'm pretty familiar with the basics at least!
